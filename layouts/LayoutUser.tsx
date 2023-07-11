@@ -1,5 +1,5 @@
-import Nabvar from "@/components/Navbar"
 import { FC, ReactNode } from "react"
+import { Navbar, Sidebar } from "@/components"
 
 interface Props {
     children: ReactNode
@@ -9,7 +9,8 @@ const LayoutUser: FC<Props> = () => {
     return (
         <>
 
-            <Nabvar />
+            <Navbar />
+            <Sidebar />
 
         </>
     )
