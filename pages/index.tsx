@@ -1,12 +1,17 @@
+import LayoutUser from '@/layouts/LayoutUser'
 import React, { FC } from 'react'
+import Nabvar from '@/components/Navbar'
 
 
 const HomePage: FC = () => {
   return (
 
-    <>
-      <div>HomePage</div>
-    </>
+    <LayoutUser>
+
+      <Nabvar />
+
+    </LayoutUser>
+
 
 
 
