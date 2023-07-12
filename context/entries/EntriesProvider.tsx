@@ -1,12 +1,33 @@
 import { FC, useReducer } from "react";
 import { EntriesContext, entriesReducer } from "./";
+import { Entry } from "@/interfaces";
+import { v4 as uuidv4 } from 'uuid'
 
 export interface EntriesState {
-    entries: []
+    entries: Entry[]
 }
 
 const Entries_INITIAL_STATE: EntriesState = {
-    entries: []
+    entries: [
+        {
+            _id: uuidv4(),
+            description: "Hola aca estoy sin hacer nada",
+            status: "pending",
+            createdAt: Date.now()
+        },
+        {
+            _id: uuidv4(),
+            description: "Hola me voy estoy sin hacer nada",
+            status: "in-progress",
+            createdAt: Date.now() - 1000000
+        },
+        {
+            _id: uuidv4(),
+            description: "Hchaa aca estoy sin hacer nada",
+            status: "finished",
+            createdAt: Date.now() - 100000
+        },
+    ]
 }
 
 export const EntriesProvider: FC = ({ children }: any) => {
