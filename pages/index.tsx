@@ -1,3 +1,4 @@
+import { EntryList } from '@/components'
 import LayoutUser from '@/layouts/LayoutUser'
 import { Card, CardContent, CardHeader, Grid } from '@mui/material'
 import React, { FC } from 'react'
@@ -15,7 +16,7 @@ const HomePage: FC = () => {
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
             <CardHeader title='Pendientes' />
             <CardContent>
-
+              <EntryList />
 
             </CardContent>
           </Card>
