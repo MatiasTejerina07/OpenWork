@@ -1,4 +1,5 @@
-export * from './Navbar'
-export * from './Sidebar'
+export * from './NewEntries'
 export * from './EntriesCard'
 export * from './EntryList'
+export * from './Navbar'
+export * from './Sidebar'

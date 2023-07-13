@@ -1,4 +1,4 @@
-import { EntryList } from '@/components'
+import { EntryList, NewEntry } from '@/components'
 import LayoutUser from '@/layouts/LayoutUser'
 import { Card, CardContent, CardHeader, Grid } from '@mui/material'
 import React, { FC } from 'react'
@@ -15,6 +15,7 @@ const HomePage: FC = () => {
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
             <CardHeader title='Pendientes' />
+            <NewEntry />
             <CardContent>
               <EntryList status='pending' />
             </CardContent>
