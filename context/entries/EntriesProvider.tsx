@@ -11,19 +11,19 @@ const Entries_INITIAL_STATE: EntriesState = {
     entries: [
         {
             _id: uuidv4(),
-            description: "Hola aca estoy sin hacer nada",
+            description: "Pendiente: Hola aca estoy sin hacer nada",
             status: "pending",
             createdAt: Date.now()
         },
         {
             _id: uuidv4(),
-            description: "Hola me voy estoy sin hacer nada",
+            description: "En progreso: Hola me voy estoy sin hacer nada",
             status: "in-progress",
             createdAt: Date.now() - 1000000
         },
         {
             _id: uuidv4(),
-            description: "Hchaa aca estoy sin hacer nada",
+            description: "Terminada: Hchaa aca estoy sin hacer nada",
             status: "finished",
             createdAt: Date.now() - 100000
         },
