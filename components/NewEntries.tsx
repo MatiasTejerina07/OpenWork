@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, useContext, useState } from 'react'
 import { Box, Button, TextField } from '@mui/material'
 import { SaveAltOutlined, CancelRounded, AddCommentOutlined } from '@mui/icons-material';
+import { EntriesContext } from '@/context/entries';
 
 
 
@@ -11,10 +12,20 @@ export const NewEntry: FC = () => {
     const [touched, setTouched] = useState(false)
     const [inputValue, setInputValue] = useState('')
 
+
+    const { addNewEntry } = useContext(EntriesContext)
+
     const onTextFieldChanged = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value)
     }
 
+    const onSave = () => {
+        if (inputValue.length === 0) return
+        else {
+            addNewEntry(inputValue)
+            setInputValue('')
+        }
+    }
 
 
 
@@ -45,7 +56,7 @@ export const NewEntry: FC = () => {
                                 variant='outlined'
                                 color='error'
                                 endIcon={<CancelRounded />}
-                                onClick={() => setIsAdding(false)}
+                                onClick={() => { setIsAdding(false), setInputValue('') }}
                             >
                                 Cancelar
                             </Button>
@@ -54,6 +65,7 @@ export const NewEntry: FC = () => {
                                 variant='outlined'
                                 color='secondary'
                                 endIcon={<SaveAltOutlined />}
+                                onClick={onSave}
                             >
                                 Guardar
                             </Button>
