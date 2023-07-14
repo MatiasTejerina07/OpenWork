@@ -23,6 +23,8 @@ export const NewEntry: FC = () => {
         if (inputValue.length === 0) return
         else {
             addNewEntry(inputValue)
+            setIsAdding(false)
+            setTouched(false)
             setInputValue('')
         }
     }
