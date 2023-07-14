@@ -12,9 +12,7 @@ export const NewEntry: FC = () => {
     const [inputValue, setInputValue] = useState('')
 
     const onTextFieldChanged = (event: ChangeEvent<HTMLInputElement>) => {
-
-
-
+        setInputValue(event.target.value)
     }
 
 
@@ -36,9 +34,11 @@ export const NewEntry: FC = () => {
                             autoFocus
                             multiline
                             label='Nueva entrada'
-                            helperText='Ingrese un valor'
+                            helperText={inputValue.length <= 0 && touched && 'Ingrese un valor'}
+                            error={inputValue.length <= 0 && touched}
                             value={inputValue}
                             onChange={onTextFieldChanged}
+                            onBlur={() => setTouched(true)}
                         />
                         <Box className='flex justify-between w-11/12'>
                             <Button
