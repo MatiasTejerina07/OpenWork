@@ -3,13 +3,15 @@ import { UiContext, uiReducer } from './';
 
 export interface UIState {
     sidemenuOpen: boolean,
-    isAddingEntry: boolean
+    isAddingEntry: boolean,
+    isDragging: boolean
 
 }
 
 const UI_INITIAL_STATE: UIState = {
     sidemenuOpen: false,
-    isAddingEntry: false
+    isAddingEntry: false,
+    isDragging: false
 }
 
 export const UIProovider: FC = ({ children }: any) => {
@@ -22,6 +24,9 @@ export const UIProovider: FC = ({ children }: any) => {
 
     const setIsAddingEntry = (isAdding: boolean) => dispatch({ type: "UI - Set isAddingEntry", payload: isAdding })
 
+    const startDragging = () => dispatch({ type: "UI - Start Dragging" })
+
+    const endDragging = () => dispatch({ type: "UI - End Dragging" })
 
     return (
         <UiContext.Provider value={{
@@ -29,7 +34,10 @@ export const UIProovider: FC = ({ children }: any) => {
             openSideMenu,
             closeSideMenu,
 
-            setIsAddingEntry
+            setIsAddingEntry,
+
+            endDragging,
+            startDragging
 
         }}>
             {children}

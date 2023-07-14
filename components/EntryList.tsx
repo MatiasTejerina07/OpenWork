@@ -3,6 +3,8 @@ import React, { FC, useContext, useMemo, DragEvent } from 'react'
 import { EntriesCard } from './EntriesCard'
 import { EntryesStatus } from '@/interfaces'
 import { EntriesContext } from '@/context/entries'
+import { UiContext } from '@/context/ui'
+import styles from './EntryList.module.css'
 
 
 interface Props {
@@ -10,6 +12,8 @@ interface Props {
 }
 
 export const EntryList: FC<Props> = ({ status }) => {
+
+  const { isDragging } = useContext(UiContext)
 
   const { entries } = useContext(EntriesContext)
   const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries])
@@ -21,10 +25,13 @@ export const EntryList: FC<Props> = ({ status }) => {
     event.preventDefault()
   }
 
+
+
   return (
     <div
       onDrop={onDrop}
       onDragOver={allowDrop}
+      className={isDragging ? styles.dragging : ''}
 
     >
       <Paper sx={{
@@ -32,7 +39,7 @@ export const EntryList: FC<Props> = ({ status }) => {
         backgroundColor: 'transparent'
       }}>
 
-        <List sx={{ opacity: 1 }}>
+        <List sx={{ opacity: isDragging ? 0.2 : 1, transition: 'all .3s' }}>
 
           {
             entriesByStatus.map(entry => (
